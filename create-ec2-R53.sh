@@ -35,6 +35,6 @@ do
     '
 done
 
-# imporvement
+# imporvements
 # check instance is already created or not
 # update route53 record
