@@ -50,7 +50,7 @@ VALIDATE $? "Moving to default HTML directory"
 unzip /tmp/web.zip &>>$LOGFILE
 VALIDATE $? "unzipping web artifact"
 
-cp /home/centos/DevOps-AWS/shell-script/roboshop.conf /etc/nginx/default.d/roboshop.conf  &>>$LOGFILE
+cp /home/centos/devops-aws/shell-script/roboshop.conf /etc/nginx/default.d/roboshop.conf  &>>$LOGFILE
 VALIDATE $? "copying roboshop config"
 
 systemctl restart nginx  &>>$LOGFILE
