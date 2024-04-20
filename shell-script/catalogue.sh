@@ -28,9 +28,11 @@ VALIDATE(){
 }
 
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>$LOGFILE
+
 VALIDATE $? "Setting up NPM Source"
 
 yum install nodejs -y &>>$LOGFILE
+
 VALIDATE $? "Installing NodeJS"
 
 #once the user is created, if you run this script 2nd time
@@ -42,35 +44,46 @@ useradd roboshop &>>$LOGFILE
 mkdir /app &>>$LOGFILE
 
 curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip &>>$LOGFILE
+
 VALIDATE $? "downloading catalogue artifact"
 
 cd /app &>>$LOGFILE
+
 VALIDATE $? "Moving into app directory"
 
 unzip /tmp/catalogue.zip &>>$LOGFILE
+
 VALIDATE $? "unzipping catalogue"
 
 npm install &>>$LOGFILE
+
 VALIDATE $? "Installing dependencies"
 
 # give full path of catalogue.service because we are inside /app
 cp /home/centos/devops-aws/shell-script/catalogue.service /etc/systemd/system/catalogue.service &>>$LOGFILE
+
 VALIDATE $? "copying catalogue.service"
 
 systemctl daemon-reload &>>$LOGFILE
+
 VALIDATE $? "daemon reload"
 
 systemctl enable catalogue &>>$LOGFILE
+
 VALIDATE $? "Enabling Catalogue"
 
 systemctl start catalogue &>>$LOGFILE
+
 VALIDATE $? "Starting Catalogue"
 
 cp /home/centos/devops-aws/shell-script/mongo.repo /etc/yum.repos.d/mongo.repo &>>$LOGFILE
+
 VALIDATE $? "Copying mongo repo"
 
 yum install mongodb-org-shell -y &>>$LOGFILE
+
 VALIDATE $? "Installing mongo client"
 
 mongo --host mongodb.joindevops.online </app/schema/catalogue.js &>>$LOGFILE
+
 VALIDATE $? "loading catalogue data into mongodb"
