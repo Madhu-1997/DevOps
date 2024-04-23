@@ -1,0 +1,21 @@
+- name: ping to the node
+  hosts: web
+  tasks:
+  - name: ping the server
+    ansible.builtin.ping:
+#===============================
+
+# Install nginx
+
+- name: Install and run the nginx
+  hosts: web
+  become: yes
+  tasks:
+  - name: Install nginx
+    ansible.builtin.yum:
+      name: nginx
+      state: installed
+  - name: Start the ngix service
+    ansible.builtin.service:
+      name: nginx
+      state: started
