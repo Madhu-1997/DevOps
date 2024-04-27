@@ -1,5 +1,5 @@
 - name: variables in ansible
-  host: localhost
+  hosts: localhost
   # creating the variables
   vars:
     NAME: madhu
