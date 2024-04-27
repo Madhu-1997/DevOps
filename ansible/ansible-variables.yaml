@@ -1,9 +1,8 @@
 - name: variables in ansible
   hosts: localhost
   # creating the variables
-  vars:
-    NAME: madhu
-    COURCE: DevOps
+  vars_files:
+  - variables.yaml
   tasks:
   - name: Print the variables
     ansible.builtin.debug:
