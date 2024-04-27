@@ -1,0 +1,13 @@
+- name: variables in ansible
+  host: localhost
+  # creating the variables
+  vars:
+    NAME: madhu
+    COURCE: DevOps
+  tasks:
+  - name: Print the variables
+    ansible.builtin.debug:
+      msg: "I am learning Ansible"
+  - name: Print the msg
+    ansible.builtin.debug:
+      msg: "Hello This {{NAME}}, Working as a {{COURCE}} engineer, Thanks!!"
