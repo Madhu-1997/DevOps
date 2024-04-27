@@ -11,7 +11,7 @@
   - EXPE: # Mapping
       DevOps: 4
       AWS: 3
-        AZURE: 2
+      AZURE: 2
   tasks:
   - name: Print the number variable
     ansible.builtin.debug:
