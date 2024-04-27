@@ -1,0 +1,30 @@
+- name: ansible datatypes
+  hosts: localhost # you can node seerver also here
+  vars:
+    - AGE: 30 # Number
+    - NAME: "Madhu" # string
+    - isDevOps: true # boolean
+    - skills: # List
+      - DevOps
+      - AWS
+      - AZURE
+    - EXPE: # Mapping
+        DevOps: 4
+        AWS: 3
+        AZURE: 2
+  tasks:
+  - name: Print the number variable
+    ansible.builtin.debug:
+    msg: "{{AGE}}"
+  - name: print the Name vraible
+    ansible.builtin.debug:
+    msg: "{{NAME}}"
+  - name: print the boolean variable
+    ansible.builtin.debug:
+    msg: "{{isDevOps}}"
+  - name: print the list variable
+    ansible.builtin.debug:
+    msg: "{{skills}}"
+  - name: print the map variable
+    ansible.builtin.debug:
+    msg: "{{EXPE}}"
