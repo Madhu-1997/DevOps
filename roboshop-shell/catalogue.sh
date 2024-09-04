@@ -48,7 +48,7 @@ VALIDATE $? "Installed the nodejs:18 module"
 id roboshop
 
 if [ $? -ne 0 ]; then
-    useradde roboshop
+    useradd roboshop
     VALIDATE $? "roboshop user creation"
 else
     echo -e "roboshop user already exist $Y SKIPPING $N"
@@ -74,6 +74,7 @@ VALIDATE $? "Installed the npm package"
 
 # Copy the catalouge service
 cp /home/centos/AWS-DEVPS/roboshop-shell/catalogue.service /etc/systemd/system/ &>> $LOGFILE
+/home/centos/aws-devops/roboshop-shell
 VALIDATE $? "Copied the catalogue service"
 
 #Start the service
