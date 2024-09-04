@@ -15,7 +15,7 @@ echo "script stareted executing at $TIMESTAMP" &>> $LOGFILE
 
 # Validation function to check the success or failure of a command
 VALIDATE(){
-    if [ $1 -ne 0 ]; then
+    if [ $(id -u) -ne 0 ]; then
         echo -e "$2 ... $R FAILED $N"
         exit 1
     else
