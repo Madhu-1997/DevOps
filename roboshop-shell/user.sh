@@ -58,34 +58,34 @@ mkdir -p /app
 VALIDATE $? "Created app directory"
 
 # Download the application code to created app directory.
-curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip  &>> $LOGFILE
-VALIDATE $? "Downloaded the catalouge code"
+curl -L -o /tmp/user.zip https://roboshop-builds.s3.amazonaws.com/user.zip  &>> $LOGFILE
+VALIDATE $? "Downloaded the user code"
 
 cd /app
 
 # unzip the catalogue package
-unzip -o /tmp/catalogue.zip &>> $LOGFILE
-VALIDATE $? "Un-zipped catalogue package"
+unzip -o /tmp/user.zip &>> $LOGFILE
+VALIDATE $? "Un-zipped user package"
 
 # Install the npm package
 npm install &>> $LOGFILE
 VALIDATE $? "Installed the npm package"
 
-# Copy the catalouge service
-cp /home/centos/aws-devops/roboshop-shell/catalogue.service /etc/systemd/system/ &>> $LOGFILE
-VALIDATE $? "Copied the catalogue service"
+# Copy the user service
+cp /home/centos/aws-devops/roboshop-shell/user.service /etc/systemd/system/ &>> $LOGFILE
+VALIDATE $? "Copied the user service"
 
 #Start the service
 systemctl daemon-reload &>> $LOGFILE
 VALIDATE $? "started the daemon-service"
 
-#Enable the catalogue service
-systemctl enable catalogue &>> $LOGFILE
-VALIDATE $? "enabled the catalogue service"
+#Enable the user service
+systemctl enable user &>> $LOGFILE
+VALIDATE $? "enabled the user service"
 
-# Start the catalogue service
-systemctl start catalogue &>> $LOGFILE
-VALIDATE $? "started the catalogue service"
+# Start the user service
+systemctl start user &>> $LOGFILE
+VALIDATE $? "started the user service"
 
 # Copy the mongo.repo
 cp /home/centos/aws-devops/roboshop-shell/mongo.repo /etc/yum.repos.d/ &>> $LOGFILE
