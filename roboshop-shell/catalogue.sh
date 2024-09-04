@@ -18,10 +18,10 @@ echo "Script started executing at $TIMESTAMP" &>> $LOGFILE
 # Validation function to check the success or failure of a command
 VALIDATE() {
     if [ $1 -ne 0 ]; then
-        echo -e "$2 ... $R FAILED $N" &>> $LOGFILE
+        echo -e "$2 ... $R FAILED $N"
         exit 1
     else
-        echo -e "$2 ... $G SUCCESS $N" &>> $LOGFILE
+        echo -e "$2 ... $G SUCCESS $N"
     fi
 }
 
@@ -64,7 +64,7 @@ VALIDATE $? "Downloaded the catalouge code"
 cd /app
 
 # unzip the catalogue package
-unzip /tmp/catalogue.zip &>> $LOGFILE
+unzip -o /tmp/catalogue.zip &>> $LOGFILE
 VALIDATE $? "Un-zipped catalogue package"
 
 # Install the npm package
