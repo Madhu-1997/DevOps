@@ -23,20 +23,12 @@ VALIDATE(){
     fi
 }
 
+# Ensure the script is run as root
 if [ $(id -u) -ne 0 ]; then
     echo -e "$R ERROR:: Please run this script with root access $N"
     exit 1
 else
-    echo "You are root user"
-fi
-
-# Check the root user or not
-if [ $ID -ne 0 ]
-then
-    echo -e "$R ERROR: Please run this script with root user $N"
-    exit 1
-else
-    echo "your are the root user"
+    echo "Running as root user" &>> $LOGFILE
 fi
 
 # Copy MongoDB repo
